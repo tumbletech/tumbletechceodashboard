@@ -5,25 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CEO Dashboard</title>
 
-    <!-- Tailwind CDN -->
+    <!-- Tailwind CDN (safe mode) -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              bg: "#0a0a0a",
-              panel: "#111111",
-              border: "#222222",
-              accent: "#3b82f6"
-            }
-          }
-        }
-      }
-    </script>
   </head>
 
-  <body class="bg-bg text-neutral-100">
+  <body class="bg-neutral-900 text-neutral-100">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
