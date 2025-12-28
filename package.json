@@ -1,7 +1,6 @@
 {
-  "name": "ceo-dashboard",
+  "name": "tumbletech-ceo-dashboard",
   "private": true,
-  "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
