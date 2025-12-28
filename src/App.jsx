@@ -5,14 +5,15 @@ export default function App() {
   const [tab, setTab] = useState("Overview");
 
   return (
-    <div className="min-h-screen bg-bg text-neutral-100">
+    <div className="min-h-screen bg-neutral-900 text-neutral-100">
       {/* Top Bar */}
-      <header className="sticky top-0 z-20 border-b border-border bg-bg">
+      <header className="sticky top-0 z-20 border-b border-neutral-800 bg-neutral-900">
         <div className="px-4 py-3 space-y-3">
           <div className="text-sm text-neutral-400">
             Sun, Dec 28, 2025 · 9:14 PM
           </div>
 
+          {/* Mode */}
           <div className="flex gap-2">
             {["Focus", "Review", "Crisis"].map(m => (
               <button
@@ -20,8 +21,8 @@ export default function App() {
                 onClick={() => setMode(m)}
                 className={`px-3 py-1 rounded-xl text-sm border ${
                   mode === m
-                    ? "bg-panel border-border"
-                    : "border-border text-neutral-400"
+                    ? "bg-neutral-800 border-neutral-700"
+                    : "border-neutral-700 text-neutral-400"
                 }`}
               >
                 {m}
@@ -29,10 +30,11 @@ export default function App() {
             ))}
           </div>
 
-          <button className="w-fit px-4 py-2 rounded-xl border border-border bg-panel text-sm">
+          <button className="w-fit px-4 py-2 rounded-xl border border-neutral-700 bg-neutral-800 text-sm">
             Talk to Bobby
           </button>
 
+          {/* Tabs */}
           <div className="flex gap-2 overflow-x-auto">
             {["Overview", "Agents", "Finance", "Decisions", "Docs", "Strategy"].map(t => (
               <button
@@ -40,8 +42,8 @@ export default function App() {
                 onClick={() => setTab(t)}
                 className={`px-3 py-1 rounded-xl text-sm border ${
                   tab === t
-                    ? "bg-panel border-border"
-                    : "border-border text-neutral-400"
+                    ? "bg-neutral-800 border-neutral-700"
+                    : "border-neutral-700 text-neutral-400"
                 }`}
               >
                 {t}
@@ -61,7 +63,7 @@ export default function App() {
           </p>
         </section>
 
-        {/* KPI CARDS */}
+        {/* KPIs */}
         <section className="grid grid-cols-2 gap-3">
           <Kpi title="Cash Runway" value="4.2mo" note="▲ Stable burn rate" />
           <Kpi title="Active Projects" value="7" note="2 near shipping" />
@@ -119,7 +121,7 @@ export default function App() {
             <Mini title="Net" value="₱64k" />
           </div>
 
-          <div className="rounded-2xl border border-border bg-panel p-3 text-sm">
+          <div className="rounded-2xl border border-neutral-700 bg-neutral-800 p-3 text-sm">
             <strong>AI Note:</strong> You’re fine. Keep shipping.
           </div>
         </section>
@@ -132,7 +134,7 @@ export default function App() {
 
 function Kpi({ title, value, note }) {
   return (
-    <div className="rounded-2xl border border-border bg-panel p-4">
+    <div className="rounded-2xl border border-neutral-700 bg-neutral-800 p-4">
       <div className="text-xs text-neutral-400">{title}</div>
       <div className="mt-2 text-2xl font-semibold">{value}</div>
       <div className="mt-1 text-sm text-neutral-300">{note}</div>
@@ -142,7 +144,7 @@ function Kpi({ title, value, note }) {
 
 function Mini({ title, value }) {
   return (
-    <div className="rounded-2xl border border-border bg-panel p-3">
+    <div className="rounded-2xl border border-neutral-700 bg-neutral-800 p-3">
       <div className="text-xs text-neutral-400">{title}</div>
       <div className="mt-1 font-semibold">{value}</div>
     </div>
@@ -151,13 +153,13 @@ function Mini({ title, value }) {
 
 function Agent({ name, role, status, time, desc }) {
   const colors = {
-    stable: "bg-green-900 text-green-300",
-    needs: "bg-yellow-900 text-yellow-300",
-    blocked: "bg-red-900 text-red-300"
+    stable: "bg-green-700 text-green-100",
+    needs: "bg-yellow-700 text-yellow-100",
+    blocked: "bg-red-700 text-red-100"
   };
 
   return (
-    <div className="rounded-2xl border border-border bg-panel p-4 space-y-2">
+    <div className="rounded-2xl border border-neutral-700 bg-neutral-800 p-4 space-y-2">
       <div className="flex justify-between items-center">
         <div className="font-semibold">{name}</div>
         <span className={`text-xs px-2 py-1 rounded-full ${colors[status]}`}>
