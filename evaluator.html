@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tumbletech Lead Mailbox</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      background: #0f172a;
+      color: #e5e7eb;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .box {
+      background: #020617;
+      padding: 24px;
+      border-radius: 12px;
+      width: 360px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.5);
+    }
+    h1 {
+      font-size: 18px;
+      margin-bottom: 12px;
+    }
+    input, button {
+      width: 100%;
+      margin-top: 10px;
+    }
+    button {
+      background: #38bdf8;
+      color: #020617;
+      border: none;
+      padding: 10px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <h1>Tumbletech Lead Evaluator</h1>
+    <form id="uploadForm">
+      <input type="file" name="screenshot" accept="image/*" required />
+      <button type="submit">Send to Evaluator</button>
+    </form>
+    <p id="status"></p>
+  </div>
+
+<script>
+  const form = document.getElementById("uploadForm");
+  const status = document.getElementById("status");
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const formData = new FormData(form);
+
+    status.textContent = "Uploading…";
+
+    try {
+      const res = await fetch(
+        "https://n8n.yourdomain.com/webhook/tumbletech-lead-mailbox",
+        {
+          method: "POST",
+          body: formData
+        }
+      );
+
+      if (!res.ok) throw new Error("Upload failed");
+
+      status.textContent = "Screenshot sent for evaluation.";
+      form.reset();
+    } catch (err) {
+      status.textContent = "Error sending screenshot.";
+    }
+  });
+</script>
+
+</body>
+</html>
